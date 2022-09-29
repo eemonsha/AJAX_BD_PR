@@ -13,9 +13,9 @@
                 <select id="dvlst" class="form-control">
                     <option value="0">select Division</option>
                     @foreach(var dv in ViewBag.divlist)
-            {
-                <option value="@dv.Id">@dv.Name </option>
-            }
+                    {
+                        <option value="@dv.Id">@dv.Name </option>
+                    }
                 </select>
             </div>
             <div class="col-md-4">
@@ -32,4 +32,36 @@
             </div>
         </div>
     </div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+           
+            $('#dvlst').change(function () {
+                let divvid = $("#dvlst option:selected").val();
+                console.log(divvid)
+                $.ajax({
+                    url: '/Home/getDistricts',
+                    type: 'GET',
+                    cache: false,
+                    dataType: 'JSON',
+                    data: { id: divvid },
+                    success: function (mdata) {
+                        if (mdata.flag == "1") {
+                            $('#dslist').empty(); /*here load empty to process new data*/
+                            $.each(mdata.data, function (i, obj) {
+                                let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
+                                $('#dslist').append(s);
+                            });
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+
+                });
+            });
+ 
+    </script>
+}
 

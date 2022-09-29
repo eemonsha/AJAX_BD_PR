@@ -24,8 +24,6 @@ namespace AJAX_BD_PR.Controllers
 
         public IActionResult Index()
         {
-
-
             var divlists = _context.divList.OrderBy(x => x.Name);
             ViewBag.divlist = divlists;
             return View();
@@ -61,9 +59,25 @@ namespace AJAX_BD_PR.Controllers
                 return Json(new { flag = "0", msg = "District Not Found." });
             }
         }
-        //public JsonResult getupazilass()
-        //{
 
-        //}
+
+        public JsonResult getUpazilas(int id)
+        {
+
+            if (id <= 0)
+            {
+                return Json(new { flag = "0", msg = "Invalid District" });
+            }
+            var uplist = _context.Upazila.Where(x => x.DistrictId == id).ToList();
+            if (uplist.Count > 0 && uplist != null)
+            {
+                return Json(new { flag = "1", msg = "Upazila Fount", data = uplist });
+            }
+            else
+            {
+                return Json(new { flag = "0", msg = "Upazila Not Found." });
+            }
+        }
+
     }
 }
