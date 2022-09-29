@@ -39,7 +39,8 @@
            
             $('#dvlst').change(function () {
                 let divvid = $("#dvlst option:selected").val();
-                console.log(divvid)
+                /*debugger;*/
+                console.log(divvid);
                 $.ajax({
                     url: '/Home/getDistricts',
                     type: 'GET',
@@ -56,12 +57,14 @@
                         }
                     },
                     error: function (err) {
-                        console.log(err)
+                        console.log(err);
                     }
 
                 });
             });
- 
+
+        });
+    
     </script>
 }
 
