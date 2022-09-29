@@ -42,8 +42,7 @@ namespace AJAX_BD_PR.Controllers
 
         public JsonResult getDistricts( int id)
         {
-            //var dr = _context.District.FirstOrDefault(x => x.divListId == id).Name;
-            //return Json(dr);
+
 
             if(id <= 0)
             {

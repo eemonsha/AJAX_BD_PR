@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-4">
                 <label>District</label>
-                <select id="dslst" class="form-control">
+                <select id="dslist" class="form-control">
                     <option value="0">Select District</option>
                 </select>
             </div>
@@ -35,6 +35,7 @@
 
 @section Scripts{ 
     <script>
+        //get district
         $(document).ready(function () {
            
             $('#dvlst').change(function () {
@@ -62,6 +63,34 @@
 
                 });
             });
+
+            //get upazila
+
+                $('#dslist').change(function () {
+                    let dissid = $("#dslist option:selected").val();
+                    /*debugger;*/
+                    console.log(dissid);
+                    $.ajax({
+                        url: '/Home/getUpazilas',
+                        type: 'GET',
+                        cache: false,
+                        dataType: 'JSON',
+                        data: { id: dissid },
+                        success: function (mdata) {
+                            if (mdata.flag == "1") {
+                                $('#uplst').empty(); /*here load empty to process new data*/
+                                $.each(mdata.data, function (i, obj) {
+                                    let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
+                                    $('#uplst').append(s);
+                                });
+                            }
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+
+                    });
+                });
 
         });
     
