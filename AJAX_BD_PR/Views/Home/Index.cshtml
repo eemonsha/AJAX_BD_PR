@@ -1,121 +1,130 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<html>
+
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
-<div class="text-center">
-    <h1 class="display-2">Welcome</h1>
-</div>
 
-<div class="card">
-    <div class="row">
-        <div class="col-md-4">
-            <label>Division</label>
-            <select id="dvlst" class="form-control">
-                <option value="0">select Division</option>
-                @foreach (var dv in ViewBag.divlist)
-                {
-                    <option value="@dv.Id">@dv.Name </option>
-                }
-            </select>
+<body>
+    <div class="card card-primary mt-8">
+        <div class="card-header">
+            <h3 class="card-title">Search Here</h3>
         </div>
-        <div class="col-md-4">
-            <label>District</label>
-            <select id="dslist" class="form-control">
-                <option value="0">Select District</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label>Upazila</label>
-            <select id="uplst" class="form-control">
-                <option value="0">Select Upazila</option>
-            </select>
-        </div>
-    </div>
-</div>
 
-@section Scripts{
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#dvlst').select2();
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#dslist').select2();
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#uplst').select2();
-        });
-    </script>
-
-
-
-    <script>
-        //get district
-        $(document).ready(function () {
-
-            $('#dvlst').change(function () {
-                let divvid = $("#dvlst option:selected").val();
-                /*debugger;*/
-                console.log(divvid);
-                $.ajax({
-                    url: '/Home/getDistricts',
-                    type: 'GET',
-                    cache: false,
-                    dataType: 'JSON',
-                    data: { id: divvid },
-                    success: function (mdata) {
-                        if (mdata.flag == "1") {
-                            $('#dslist').empty(); /*here load empty to process new data*/
-                            $.each(mdata.data, function (i, obj) {
-                                let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
-                                $('#dslist').append(s);
-                            });
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Division</label>
+                    <select id="dvlst" class="form-control">
+                        <option value="0">select Division</option>
+                        @foreach (var dv in ViewBag.divlist)
+                        {
+                            <option value="@dv.Id">@dv.Name </option>
                         }
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label>District</label>
+                    <select id="dslist" class="form-control">
+                        <option value="0">Select District</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label>Upazila</label>
+                    <select id="uplst" class="form-control">
+                        <option value="0">Select Upazila</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+     </div>
+
+        @section Scripts{
+            <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#dvlst').select2();
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $('#dslist').select2();
+                });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $('#uplst').select2();
+                });
+            </script>
+
+
+
+            <script>
+                //get district
+                $(document).ready(function () {
+
+                    $('#dvlst').change(function () {
+                        let divvid = $("#dvlst option:selected").val();
+                        /*debugger;*/
+                        console.log(divvid);
+                        /*$('#uplst').empty();*/
+                        $.ajax({
+                            url: '/Home/getDistricts',
+                            type: 'GET',
+                            cache: false,
+                            dataType: 'JSON',
+                            data: { id: divvid },
+                            success: function (mdata) {
+                                if (mdata.flag == "1") {
+                                    $('#dslist').empty();/*here load empty to process new data*/
+                                    $.each(mdata.data, function (i, obj) {
+                                        let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
+                                        $('#dslist').append(s);
+                                    });
+                                }
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+
+                        });
+                    });
+
+                    //get upazila
+
+                    $('#dslist').change(function () {
+                        let dissid = $("#dslist option:selected").val();
+                        /*debugger;*/
+                        console.log(dissid);
+                        $.ajax({
+                            url: '/Home/getUpazilas',
+                            type: 'GET',
+                            cache: false,
+                            dataType: 'JSON',
+                            data: { id: dissid },
+                            success: function (mdata) {
+                                if (mdata.flag == "1") {
+                                    $('#uplst').empty(); /*here load empty to process new data*/
+                                    $.each(mdata.data, function (i, obj) {
+                                        let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
+                                        $('#uplst').append(s);
+                                    });
+                                }
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+
+                        });
+                    });
 
                 });
-            });
 
-            //get upazila
-
-            $('#dslist').change(function () {
-                let dissid = $("#dslist option:selected").val();
-                /*debugger;*/
-                console.log(dissid);
-                $.ajax({
-                    url: '/Home/getUpazilas',
-                    type: 'GET',
-                    cache: false,
-                    dataType: 'JSON',
-                    data: { id: dissid },
-                    success: function (mdata) {
-                        if (mdata.flag == "1") {
-                            $('#uplst').empty(); /*here load empty to process new data*/
-                            $.each(mdata.data, function (i, obj) {
-                                let s = '<option value="' + obj.id + '">' + obj.name + '</option>';   /*object ar value nelam table ar properties ar nam ar mil rekhe*/
-                                $('#uplst').append(s);
-                            });
-                        }
-                    },
-                    error: function (err) {
-                        console.log(err);
-                    }
-
-                });
-            });
-
-        });
-
-    </script>
-}
-
+            </script>
+        }
+</body>
+</html>
