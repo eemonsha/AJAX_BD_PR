@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-2">Welcome</h1>  
+</div>
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-4">
+                <label>Division</label>
+                <select id="dvlst" class="form-control">
+                    <option value="0">select Division</option>
+                    @foreach(var dv in ViewBag.divlist)
+            {
+                <option value="@dv.Id">@dv.Name </option>
+            }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>District</label>
+                <select id="dslst" class="form-control">
+                    <option value="0">Select District</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label>Upazila</label>
+                <select id="uplst" class="form-control">
+                    <option value="0">Select Upazila</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
