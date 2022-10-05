@@ -8479,11 +8479,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\emons\\source\\repos\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
+      "projectUniqueName": "D:\\Practice\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
       "projectName": "AJAX_BD_PR",
-      "projectPath": "C:\\Users\\emons\\source\\repos\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
+      "projectPath": "D:\\Practice\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
       "packagesPath": "C:\\Users\\emons\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\emons\\source\\repos\\AJAX_BD_PR\\AJAX_BD_PR\\obj\\",
+      "outputPath": "D:\\Practice\\AJAX_BD_PR\\AJAX_BD_PR\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\emons\\AppData\\Roaming\\NuGet\\NuGet.Config",

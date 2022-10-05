@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TGOKdXRux8x/Ebn7nmigf3kaoVSROVYSbTorH3Zn3E1JneepTlyxV2iFKo15/+nWds1abH2oUhjHckEHV0pxOg==",
+  "dgSpecHash": "O4xYAn+RLQceatR8thZLAt07zWIgCi7jtAPH+LAyTVhF83iMbBUXfRxx4oz468du61D2Si7bcIs0YDd1ovtlOg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\emons\\source\\repos\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
+  "projectFilePath": "D:\\Practice\\AJAX_BD_PR\\AJAX_BD_PR\\AJAX_BD_PR.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emons\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\emons\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
