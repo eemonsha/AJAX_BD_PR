@@ -42,8 +42,6 @@ namespace AJAX_BD_PR.Controllers
 
         public JsonResult getDistricts( int id)
         {
-
-
             if(id <= 0)
             {
                 return Json(new { flag = "0", msg = "Invalid division" });
